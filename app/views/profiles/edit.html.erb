@@ -1,0 +1,27 @@
+<h3>プロフィール編集画面</h3>
+
+<%= form_with model: @profile do |f| %>
+  
+  <div>
+    <%= f.label :user_icon %>
+    <% if current_user.user_icon.attached? %>
+      <%= image_tag current_user.user_icon %>
+    <% end %>  
+    <%= f.file_field :user_icon %>
+  </div>
+
+  <div>
+    <%= f.label :name ,"名前" %></br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :introduction ,"自己紹介" %></br>
+    <%= f.text_area :introduction %>
+  </div>
+
+  <div>
+    <%= f.submit "保存" %>
+  </div>
+
+<% end %>

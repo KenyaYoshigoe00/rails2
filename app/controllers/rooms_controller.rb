@@ -1,0 +1,24 @@
+class RoomsController < ApplicationController
+  def  index
+    @rooms = current_user.rooms
+  end
+  
+  def show
+      @room = Room.find(params[:id])
+  end
+  
+  def new
+    @room = Room.new
+  end
+  
+  def create
+    @room = Room.new(params.require(:room).permit(:name, :introduction, :price, :address, :user_id))
+    @room.room_icon.attach(params[:room][:room_icon])
+    if @room.save
+      flash[:notice] = "新規登録しました"
+      redirect_to '/rooms'
+    else
+      render '/rooms/new'
+    end
+  end
+end

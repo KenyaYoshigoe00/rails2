@@ -1,0 +1,18 @@
+<div><%= link_to "←戻る", :back %></div>
+
+<div class="show_room">
+  <div class="inline_block show_image">
+    <% if @room.room_icon.attached? %>
+      <%= image_tag @room.room_icon, class:"room_image_size2" %>
+    <% else %>
+      <%= image_tag 'default_room_image.png', class:"room_image_size2" %>
+    <% end %>
+  </div>
+
+  <div class="inline_block show_content">
+    <div><%= @room.name %></div>
+    <div><%= @room.address %></div>
+    <div><%= @room.introduction %></div>
+    <div><%= number_to_currency(@room.price,precision: 0, unit: "¥") %>~</div>
+  </div>
+</div>

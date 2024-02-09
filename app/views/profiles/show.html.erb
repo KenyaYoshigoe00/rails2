@@ -1,0 +1,23 @@
+<h3> ここは　プロフィール　の画面 </h3>
+
+<%= link_to "アカウントへ", '/users/account' %>
+<%= link_to "編集", '/users/profiles/edit' %>
+
+<p>
+  アイコン画像を表示
+  <% if current_user.user_icon.attached? %>
+    <%= image_tag current_user.user_icon %>
+  <% else %>
+    画像なし
+  <% end %>
+</p>
+
+<p>
+  名前を表示
+  <%= current_user.name %>
+</p>
+
+<p>
+  自己紹介を表示
+  <%= current_user.introduction %>
+</p>

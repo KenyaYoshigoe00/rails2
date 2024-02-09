@@ -1,0 +1,28 @@
+.room_image_size {
+  width: 300px;
+  height: auto;
+  object-fit: cover;
+}
+
+.room_image_size2 {
+  width: 600px;
+  height: auto;
+  object-fit: cover;
+}
+
+.inline_block {
+  display: inline-block;
+}
+
+.show_room {
+  display: flex;
+  justify-content: space-between;
+}
+
+.show_image {
+  width: 45%;
+}
+
+.show_content {
+  width: 55%;
+}

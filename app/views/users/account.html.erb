@@ -1,0 +1,25 @@
+<h3>ここは　アカウント　の画面</h3>
+
+<%= link_to "プロフィールへ", 'profiles/show' %>
+<%= link_to "編集", '/users/edit' %>
+
+<p>
+  IDを表示
+  <%= current_user.id %>
+</p>
+
+<p>
+  名前を表示
+  <%= current_user.name %>
+
+<p>
+  メールアドレスを表示
+  <%= current_user.email %>
+</p>
+
+<p>
+  パスワード
+  ******
+</p>
+
+<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

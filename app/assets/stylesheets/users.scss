@@ -1,0 +1,45 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  
+}
+
+.registration {
+  margin-right: 20px;
+}
+
+.drop_down_button {
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: white;
+}
+
+.header_icon {
+  margin-top: 3px;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.header_name {
+  margin-left: 5px;
+  margin-right: 20px;
+}
+
+.parent {
+  position: relative;
+}
+
+.drop_down_menu {
+  position: absolute;
+  right: 10px;
+  top: 40px;
+  z-index: 1;
+}
+
+.child {
+  position: absolute;
+}
