@@ -27,13 +27,15 @@ class RoomsController < ApplicationController
     if params[:keyword].present?
       @rooms = Room.where('name LIKE ? or introduction LIKE ?', "%#{params[:keyword]}%","%#{params[:keyword]}%")
     else
-      redirect_to '/users'
+      @rooms = Room.all
     end
   end
   
   def search_address
     if params[:keyword].present?
       @rooms = Room.where('address LIKE ?', "%#{params[:keyword]}%")
+    else
+      @rooms = Room.all
     end
   end
 end
