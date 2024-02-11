@@ -8,11 +8,14 @@ class ProfilesController < ApplicationController
   
   def update
     @profile = current_user
+    if params[:user][:user_icon] != nil #画像未選択でも上書きされないように。params[:user]とparams[:user_icon]とparams[:user][:user_icon]はすべて違うもの
+      @profile.user_icon.attach(params[:user][:user_icon])
+    end
     if @profile.update(params.require(:user).permit(:name, :introduction))
       flash[:notice] = "更新しました"
-      redirect_to :back
+      redirect_to '/users/profiles/show'
     else
-      render '/users/profiles/edit'
+      redirect_to '/users/profiles/edit'
     end
   end
   

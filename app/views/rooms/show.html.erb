@@ -10,9 +10,39 @@
   </div>
 
   <div class="inline_block show_content">
-    <div><%= @room.name %></div>
-    <div><%= @room.address %></div>
+    <div style="font-weight: bold;font-size: 40px;"><%= @room.name %></div>
+    <div style="color: #696969;"><%= @room.address %></div>
     <div><%= @room.introduction %></div>
-    <div><%= number_to_currency(@room.price,precision: 0, unit: "¥") %>~</div>
+    <div style="font-size: 30px;">¥<%= @room.price %>~</div>
+
+
+  <% if user_signed_in? %>
+    <%= render "devise/shared/error_messages", resource: @reservation %>
+
+    <%= form_with model: @reservation, url: confirm_reservations_path(@reservation) do |f| %>
+      <table>
+        <tr>
+          <th><%= f.label :check_in ,"チェックイン日" %></th>
+          <td><%= f.date_field :check_in %></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :check_out ,"チェックアウト日" %></th>
+          <td><%= f.date_field :check_out %></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :people ,"人数" %></th>
+          <td><%= f.number_field :people %></td>
+        </tr>
+      </table>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+
+      <div><%= f.submit "予約する" %></div>
+    <% end %>
+  <% else %>
+    <p>予約機能はログインで利用できます。</p>
+  <% end %>
   </div>
 </div>

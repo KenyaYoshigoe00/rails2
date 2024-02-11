@@ -4,7 +4,14 @@
   align-items: center;
   height: 50px;
   width: 100%;
-  
+  background-color: #4682b4;
+}
+
+.top_page_url {
+  font-size: 25px;
+  margin: 10px;
+  color: black;
+  text-decoration: none;
 }
 
 .registration {
@@ -15,7 +22,7 @@
   display: flex;
   align-items: center;
   border: none;
-  background-color: white;
+  background-color: #4682b4;
 }
 
 .header_icon {
@@ -31,15 +38,25 @@
 
 .parent {
   position: relative;
+  background-color: #b0c4de;
 }
 
 .drop_down_menu {
   position: absolute;
   right: 10px;
-  top: 40px;
+  top: 50px;
   z-index: 1;
+  background-color: #b0c4de;
 }
 
 .child {
   position: absolute;
+}
+
+.font_black {
+  color: black;
+}
+
+.text_align_center {
+  text-align: center;
 }

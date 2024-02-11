@@ -1,0 +1,36 @@
+<div>
+  <span>チェックイン日</span>
+  <%= @reservation.check_in %>
+</div>
+
+<div>
+  <span>チェックアウト日</span>
+  <%= @reservation.check_out %>
+</div>
+
+<div>
+  <span>日数</span>
+  <% total_number_of_days = (@reservation.check_out - @reservation.check_in) %>
+  <%= total_number_of_days.to_i %>日
+</div>
+
+<div>
+  <span>人数</span>
+  <%= @reservation.people %>人
+</div>
+
+<div>
+  <span>合計金額</span>
+  ¥<%= (total_number_of_days * @reservation.people * @reservation.room.price).to_i %>
+</div>
+
+<%= form_with model: @reservation do |f| %>
+  <%= f.hidden_field :check_in %>
+  <%= f.hidden_field :check_out %>
+  <%= f.hidden_field :people %>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :room_id %>
+  <%= f.submit "予約を確定" %>
+<% end %>
+
+<div><%= link_to "←戻る", :back %></div>

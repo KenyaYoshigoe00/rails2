@@ -4,7 +4,8 @@ class RoomsController < ApplicationController
   end
   
   def show
-      @room = Room.find(params[:id])
+    @room = Room.find(params[:id])
+    @reservation = Reservation.new
   end
   
   def new
@@ -19,6 +20,20 @@ class RoomsController < ApplicationController
       redirect_to '/rooms'
     else
       render '/rooms/new'
+    end
+  end
+  
+  def search
+    if params[:keyword].present?
+      @rooms = Room.where('name LIKE ? or introduction LIKE ?', "%#{params[:keyword]}%","%#{params[:keyword]}%")
+    else
+      redirect_to '/users'
+    end
+  end
+  
+  def search_address
+    if params[:keyword].present?
+      @rooms = Room.where('address LIKE ?', "%#{params[:keyword]}%")
     end
   end
 end

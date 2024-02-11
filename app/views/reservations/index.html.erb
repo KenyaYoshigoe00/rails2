@@ -1,0 +1,36 @@
+<table>
+  <thead>
+    <tr>
+      <th>画像　　</th>
+      <th>施設名　　</th>
+      <th>紹介文　　</th>
+      <th>合計料金　　</th>
+      <th>チェックイン日　　</th>
+      <th>チェックアウト日　　</th>
+      <th>予約確定日時　　</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td>
+        <% if reservation.room.room_icon.attached? %>
+          <%= image_tag reservation.room.room_icon, class:"reservation_room_image_size" %>
+        <% else %>
+          <%= image_tag 'default_room_image.png', class:"reservation_room_image_size" %>
+        <% end %>
+        </td>
+        <td><%= reservation.room.name %></td>
+        <td><%= reservation.room.introduction %></td>
+        <td>
+          <% total_price = reservation.people * reservation.room.price * (reservation.check_out - reservation.check_in) %>
+          ¥<%= total_price.to_i %>
+        </td>
+        <td><%= reservation.check_in.strftime("%Y/%m/%d") %></td>
+        <td><%= reservation.check_out.strftime("%Y/%m/%d") %></td>
+        <td><%= reservation.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

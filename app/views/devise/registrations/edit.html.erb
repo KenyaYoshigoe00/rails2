@@ -1,40 +1,39 @@
 <!-- <h2>Edit <%= resource_name.to_s.humanize %></h2> -->
 
-<h3>アカウント編集画面</h3>
+<h3 class="mx-auto" style="width: 50%;">アカウント編集</h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email ,"メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="field mx-auto m-1" style="width: 30%;">
+    <%= f.label :email ,"メールアドレス", class: "m-1" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control m-1" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password ,"新しいパスワード" %> <i>(変更しない場合は空欄にしてください)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="field mx-auto m-1" style="width: 30%;">
+    <%= f.label :password ,"新しいパスワード", class: "m-1" %><em>（<%= @minimum_password_length %> 文字以上）</em><br />
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control m-1" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> 文字以上</em>
     <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation ,"パスワード確認" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="field mx-auto m-1" style="width: 30%;">
+    <%= f.label :password_confirmation ,"パスワード確認", class: "m-1" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control m-1" %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password ,"現在のパスワード" %> <i>(変更には現在のパスワードが必要です)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  <div class="field mx-auto m-1" style="width: 30%;">
+    <%= f.label :current_password ,"現在のパスワード", class: "m-1" %> <i>(変更には現在のパスワードが必要です)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control m-1" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "保存" %>
+  <div class="actions mx-auto" style="width: 30%">
+    <%= f.submit "保存", class: 'btn btn-primary m-1' %>
   </div>
 <% end %>
 

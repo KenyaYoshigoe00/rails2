@@ -1,25 +1,10 @@
-<h3>ここは　アカウント　の画面</h3>
+<h3 class="inline_block p-3">設定</h3>
+<p class="inline_block"><%= link_to "アカウント", '/users/account', class: "btn btn-primary m-1 inline_block" %></p>
+<p class="inline_block"><%= link_to "プロフィール", 'profiles/show', class: "btn btn-light m-1" %></p>
+<p class="inline_block"><%= link_to "編集", '/users/edit', class: "btn btn-outline-primary" %></p>
 
-<%= link_to "プロフィールへ", 'profiles/show' %>
-<%= link_to "編集", '/users/edit' %>
+<p class="p-3"> メールアドレス：<%= current_user.email %></p>
 
-<p>
-  IDを表示
-  <%= current_user.id %>
-</p>
+<p class="p-3">パスワード：******</p>
 
-<p>
-  名前を表示
-  <%= current_user.name %>
-
-<p>
-  メールアドレスを表示
-  <%= current_user.email %>
-</p>
-
-<p>
-  パスワード
-  ******
-</p>
-
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  <%#= link_to "ログアウト", destroy_user_session_path, method: :delete %>

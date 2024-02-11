@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Reservation</title>
+    <title>RoomReservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <header class="header">
-    <a href = "/">宿泊予約サイト</a>
+    <a href = "/" class="top_page_url">ポテパンシェア</a>
     <div>
       <% if user_signed_in? %>
         <button id="drop_down_button" class="drop_down_button">
-          <span class="header_icon"><%= image_tag current_user.user_icon.variant(resize: '40x40') %></span>
+          <% if current_user.user_icon.present? %>
+            <span class="header_icon"><%= image_tag current_user.user_icon.variant(resize: '40x40') %></span>
+          <% else %>
+            <%= image_tag 'default_user_image.png', size: '40x40' %>
+          <% end %>
           <span class="header_name"><%= current_user.name %></span>
         </button>
       <% else %>
         <div> 
-          <span><%= link_to "ログイン", new_user_session_path, class: 'post' %></span>
-          <span class="registration"><%= link_to "新規登録", new_user_registration_path, class: 'post' %></span>
+          <span><%= link_to "ログイン", new_user_session_path, class: 'post font_black' %></span>
+          <span class="registration"><%= link_to "新規登録", new_user_registration_path, class: 'post font_black' %></span>
         </div>  
       <% end %> 
   </div>
@@ -30,17 +35,17 @@
   <body class="parent">
     <div id="drop_down_menu" class="drop_down_menu" style="display: none;">
       <p>
-        <%= link_to "施設の新規登録", '/rooms/new' %><br>
-        予約済み一覧<br>
-        <%= link_to "登録済み一覧", '/rooms' %><br>
-        <%= link_to "アカウント設定", '/users/account' %><br>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to "施設の新規登録", '/rooms/new', class: "font_black" %><br>
+        <%= link_to "予約済み一覧", '/reservations', class: "font_black" %><br>
+        <%= link_to "登録済み一覧", '/rooms', class: "font_black" %><br>
+        <%= link_to "アカウント設定", '/users/account', class: "font_black" %><br>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "font_black" %>
       </p>
     </div>
-  <!--
+  
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-  -->
+  
     <%= yield %>
   </body>
 </html>
